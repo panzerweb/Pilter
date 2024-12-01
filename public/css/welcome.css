@@ -1,0 +1,13 @@
+/* Content for welcome.blade.php */
+
+:root{
+    --primary: #2a3056;
+    --secondary: #43B0AF;
+    --tertiary: #1D719D;
+    --fourth: #81EC86;
+    --fifth: #b1b9c5;
+}
+
+body{
+    height: 110vh;
+    background-image: linear-gradient(to top, #07101b, #0b1522, #0c1a2a, #0d1e31, #0d2339, #0e2840, #0f2d48, #0f324f, #103957, #11415f, #114867, #12506f);}
