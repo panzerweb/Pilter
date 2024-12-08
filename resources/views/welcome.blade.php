@@ -2,13 +2,13 @@
 
 @section('content')
     
-<div class="container-lg my-5">
-    <div class="row justify-content-center">
+<div class="container-lg my-5 pt-4">
+    <div class="row justify-content-center align-items-center">
         <div class="col-12 col-lg-5">
             <h1 class="display-2 text-light fw-bold text-wrap text-center text-md-start">
                 Enhance your Memories that you captured
             </h1>
-            <p class="lead text-secondary text-wrap w-100 text-center text-md-start">
+            <p class="lead text-light text-wrap w-100 text-center text-md-start">
                 A picture is a memory, and memory is a picture. Make your images possess the captivating elements of your memories.
             </p>
             <div class="button-group gap-3 d-flex justify-content-center justify-content-md-start mt-4">
@@ -22,7 +22,19 @@
             </div>
         </div>
         <div class="col-12 col-lg-5">
+            <div class="owl-carousel owl-theme">
+                    <img
+                    src="{{asset('images/misc/welcome1.svg')}}"
+                    class="img-fluid rounded-3 border border-3 border-light"
+                    alt=""
+                    />
 
+                    <img
+                    src="{{asset('images/misc/welcome2.svg')}}"
+                    class="img-fluid rounded-3 border border-3 border-light"
+                    alt=""
+                    />
+            </div>
         </div>
     </div>
 </div>

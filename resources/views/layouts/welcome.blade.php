@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Pilter</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,6 +16,9 @@
         <link rel="stylesheet" href="{{asset('css/welcome.css')}}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="{{asset('owl/dist/assets/owl.carousel.css')}}">
+        <link rel="stylesheet" href="{{asset('owl/dist/assets/owl.carousel.min.css')}}">
+        <link rel="stylesheet" href="{{asset('owl/dist/assets/owl.theme.default.min.css')}}">
     </head>
     <body>
         {{-- Navbar --}}
@@ -24,7 +27,7 @@
                 <nav class="navbar navbar-expand-md shadow-sm">
                     <div class="container-lg">
                         <!-- Brand Name -->
-                        <a class="navbar-brand text-light fw-bold" href="{{ url('/') }}">
+                        <a class="navbar-brand text-light fw-bold fs-3" href="{{ url('/') }}">
                             <span class="text-info">Pil</span><span class="text-light">ter</span>
                         </a>
 
@@ -74,7 +77,24 @@
         </main>
 
         <footer>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+            <script src="{{ asset('owl/dist/owl.carousel.min.js') }}"></script>
+
+            
+            <script>
+                $(document).ready(function() {
+                    var owl = $('.owl-carousel');
+                    owl.owlCarousel({
+                        items: 1,
+                        loop: true,
+                        margin: 10,
+                        autoplay: true,
+                        autoplayTimeout: 1500,
+                        autoplayHoverPause: true
+                    });
+                });
+            </script>
         </footer>
 
 </body>
