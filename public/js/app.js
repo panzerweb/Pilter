@@ -1,21 +1,62 @@
-// Display image preview
+let cropper; //Initialize cropper library
+let croppedBlob = null; //The cropped image initialization
+
+// Load the Modal and Crop the Image
 let loadFile = function (event) {
-    let image = document.getElementById('image-output');
+    let cropModal = document.getElementById("cropModal");
+    let modalInstance = new bootstrap.Modal(cropModal); // Create a modal instance
+    modalInstance.show();
+
+    const image = document.getElementById('image-crop');
     image.src = URL.createObjectURL(event.target.files[0]);
+
+
+    if (cropper) {
+        cropper.destroy();
+    }
+    
+    cropper = new Cropper(image, {
+        responsive: true,
+        autoCrop: false,
+        zoomOnWheel: true,
+        autoCropArea: 1,
+        center: true,
+        viewMode: 1, // Restrict the cropping box within the canvas
+        ready() {
+            this.cropper.crop();
+            const cropContainer = cropper.cropper;
+            cropContainer.style.width = '100%';
+        },
+    });
+
 };
+
+
+//Save the Cropped Image
+let cropAndSave = function(){
+    if (cropper) {
+        const canvas = cropper.getCroppedCanvas({
+            width: 1280,
+            height: 720,
+        });
+
+        canvas.toBlob((blob) => {
+            let imageInput = document.getElementById('image-output');
+            imageInput.src = URL.createObjectURL(blob);
+            let cropModal = bootstrap.Modal.getInstance(document.getElementById("cropModal"));
+            cropModal.hide();
+
+            croppedBlob = blob;
+            
+        }, 'image/jpeg');
+    }
+}
 
 // Handle image upload
 const uploadImg = async () => {
-    const fileInput = document.getElementById('file_name');
-    const file = fileInput.files[0];
-
-    if (!file) {
-        alert('Please select an image to upload.');
-        return;
-    }
 
     const formData = new FormData();
-    formData.append('file_name', file);
+    formData.append('file_name', croppedBlob, 'cropped_image.jpg'); // Append the cropped Blob with a filename
 
     try {
         // Retrieve CSRF token
@@ -31,7 +72,7 @@ const uploadImg = async () => {
 
         // Handle response
         if (response.data.success) {
-            alert('Image uploaded successfully!');
+            alert('Image Uploaded Successfully')
             console.log(response.data);
         } else {
             alert('Failed to upload image.');
