@@ -1,22 +1,31 @@
+{{-- Page for the main dashboard --}}
+
 @extends('layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Image</div>
+            <div class="card text-bg-dark border-info mb-3">
+                <div class="card-header text-center">
+                    <h1 class="fs-4">Upload Image</h1>
+                    <span class="text-secondary">Maximum Size: 5mb | </span>
+                    <span class="text-secondary">Accepted File Types: .jpg,.png,.jpeg,.gif</span>
+                </div>
 
+                {{-- Image --}}
+                <div class="d-flex justify-content-center" id="croppedResult">
+                    <img
+                    src="{{asset('images/misc/defaultimage.png')}}"
+                    class="img-fluid d-block"
+                    alt="Image Sample"
+                    id="image-output"
+                    style="max-width: 100%;"
+                    />
+                </div>
+
+                {{-- Behavior Buttons --}}
                 <div class="card-body">
-                    <div class="d-flex justify-content-center">
-                        <img
-                        src="{{asset('images/misc/defaultimage.png')}}"
-                        class="img-fluid rounded-4"
-                        alt="Image Sample"
-                        id="image-output"
-                        />
-                    </div>
-                    
                     <div class="button-group d-flex justify-content-center gap-3 my-3">
                         <label for="file_name" class="btn btn-success">Upload Image</label>
                         <input

@@ -1,5 +1,3 @@
-console.log("Hello World");
-
 // Display image preview
 let loadFile = function (event) {
     let image = document.getElementById('image-output');

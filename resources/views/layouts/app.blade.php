@@ -16,6 +16,9 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     
 
+    {{-- Links --}}
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -102,7 +105,7 @@
                     </div>
                 </div>
                 <div class="col-9 col-lg-10 py-3">
-                    <main class="py-4">
+                    <main class="main-content py-4">
                         @yield('content')
                     </main>
                 </div>

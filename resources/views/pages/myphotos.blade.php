@@ -1,3 +1,4 @@
+{{-- Page for All Photos --}}
 @extends('layouts.app')
 
 @section('content')
