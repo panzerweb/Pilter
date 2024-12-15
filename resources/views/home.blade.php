@@ -28,7 +28,7 @@
 
                 {{-- Behavior Buttons --}}
                 <div class="card-body">
-                    <div class="button-group d-flex justify-content-center gap-3 my-3">
+                    <div class="button-group d-flex justify-content-center flex-column flex-md-row gap-3 my-3">
                         <label for="file_name" class="btn btn-success">Upload Image</label>
                         <input
                             type="file"
@@ -39,6 +39,7 @@
                             aria-describedby="image"
                             onchange="loadFile(event)" style="display: none;"
                         />
+                        <button class="btn btn-danger" id="upload-btn" onclick="cropImageAfter()">Crop Image</button>
                         <button class="btn btn-primary" id="upload-btn" onclick="uploadImg()">Save Image</button>
                     </div>
                 </div>

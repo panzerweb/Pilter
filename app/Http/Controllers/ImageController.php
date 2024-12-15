@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ImageController extends Controller
 {
+    // Upload Image Controller
     public function uploadImage(Request $request){
         $request->validate([
             'file_name' => "required|image|mimes:png,jpg,jpeg,gif|max:5120",

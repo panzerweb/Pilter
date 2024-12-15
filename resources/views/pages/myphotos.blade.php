@@ -1,4 +1,4 @@
-{{-- Page for All Photos --}}
+{{-- Page to Display All Photos of the Logged In User --}}
 @extends('layouts.app')
 
 @section('content')
