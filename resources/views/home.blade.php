@@ -12,7 +12,7 @@
                 <div class="card-header text-center">
                     <h1 class="fs-4">Upload Image</h1>
                     <span class="text-secondary">Maximum Size: 5mb | </span>
-                    <span class="text-secondary">Accepted File Types: .jpg,.png,.jpeg,.gif</span>
+                    <span class="text-secondary">Accepted File Types: .jpg,.png,.jpeg</span>
                 </div>
 
                 {{-- Image --}}

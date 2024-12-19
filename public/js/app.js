@@ -106,3 +106,7 @@ document.getElementById('cropModal').addEventListener('hidden.bs.modal', () => {
     image.src = ''; // Clear the image source
     image.classList.add('d-none'); // Hide the image element
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Bootstrap loaded:', typeof bootstrap !== 'undefined');
+});

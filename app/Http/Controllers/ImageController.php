@@ -36,6 +36,7 @@ class ImageController extends Controller
         return response()->json(['success' => false, 'message' => 'No file uploaded.']);
     }
 
+    // Display Image
     public function displayImage(){
         $user = Auth::user();
         $photos = Photo::where('user_id', auth()->id())->get();

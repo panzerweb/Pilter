@@ -8,3 +8,27 @@
 #app{
     background: #1a1a1d;
 }
+
+/* Initially hide the overlay */
+.overlay-hidden {
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Reveal the overlay on hover */
+.card:hover .overlay-hidden {
+    opacity: 1;
+}
+
+/* Ensure the button is styled properly */
+.btn-success {
+    z-index: 1; /* Ensure the button stays above the overlay */
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out; /* Add a smooth button scaling effect */
+}
+
+/* Add a scale effect on button hover */
+.btn-success:hover {
+    transform: scale(1.1); /* Slightly enlarge the button */
+}
