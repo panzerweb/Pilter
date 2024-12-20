@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="{{asset('owl/dist/assets/owl.carousel.css')}}">
         <link rel="stylesheet" href="{{asset('owl/dist/assets/owl.carousel.min.css')}}">
         <link rel="stylesheet" href="{{asset('owl/dist/assets/owl.theme.default.min.css')}}">
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
     <body>
         {{-- Navbar --}}

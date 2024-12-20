@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+body{
+    background: #1a1a1d !important;
+}
+
 #app{
     background: #1a1a1d;
 }
@@ -12,7 +16,7 @@
 /* Initially hide the overlay */
 .overlay-hidden {
     opacity: 0;
-    background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+    background: rgba(0, 0, 0, 0.7); /* Add a semi-transparent background */
     transition: opacity 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 

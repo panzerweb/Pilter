@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class ImageController extends Controller
 {
@@ -42,5 +43,24 @@ class ImageController extends Controller
         $photos = Photo::where('user_id', auth()->id())->get();
 
         return view('pages.myphotos', compact('user','photos'));
+    }
+
+    //Update Image
+    public function editImage(Request $request, Photo $photo){
+        try {
+            $request->validate([
+                "title" => "required|max:255",
+                "description" => "nullable|max:255"
+            ]);
+    
+            // Update the task with validated input
+            $photo->update($request->only(['title', 'description']));
+    
+            return response()->json(['success' => true, 'message' => 'Image Updated successfully!']);
+    
+        } catch (ValidationException $error) {
+            return response()->json(['success' => false, 'message' => 'Failed to update.']);
+
+        }
     }
 }

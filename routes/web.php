@@ -16,4 +16,5 @@ Route::get('/pages/myphotos', [App\Http\Controllers\HomeController::class, 'myPh
 Route::middleware('auth')->group(function (){
     Route::post('/upload-image', [ImageController::class, 'uploadImage'])->name('image.upload');
     Route::get('/pages/myphotos', [ImageController::class, 'displayImage'])->name('pages.myphotos');
+    Route::put('/edit-image/{photo}', [ImageController::class, 'editImage'])->name('image.edit');
 });
