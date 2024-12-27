@@ -13,6 +13,18 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="title" class="form-label fw-bold my-3">File Name</label>
+                    <input
+                        type="text"
+                        class="form-control bg-dark border border-2 border-info text-light"
+                        name="file_name"
+                        id="file_name{{$photo->id}}"
+                        aria-describedby="helpId"
+                        placeholder="Image Name"
+                        value="{{$photo->file_name}}"
+                    />
+                </div>
+                <div class="mb-3">
                     <label for="title" class="form-label fw-bold my-3">Title</label>
                     <input
                         type="text"

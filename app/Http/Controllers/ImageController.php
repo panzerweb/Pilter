@@ -46,21 +46,44 @@ class ImageController extends Controller
     }
 
     //Update Image
-    public function editImage(Request $request, Photo $photo){
+    public function editImage(Request $request, Photo $photo)
+    {
         try {
             $request->validate([
                 "title" => "required|max:255",
-                "description" => "nullable|max:255"
+                "description" => "nullable|max:255",
+                "file_name" => "required|max:255|string",
             ]);
-    
-            // Update the task with validated input
-            $photo->update($request->only(['title', 'description']));
-    
-            return response()->json(['success' => true, 'message' => 'Image Updated successfully!']);
-    
-        } catch (ValidationException $error) {
-            return response()->json(['success' => false, 'message' => 'Failed to update.']);
 
+            // Access the old file path
+            $oldFilePath = public_path($photo->file_path);
+            $newFileName = $request->file_name;
+
+            // Check if the old file exists in the upload directory
+            if (file_exists($oldFilePath)) {
+                // Define the new file path
+                $newFilePath = public_path('images/upload/' . $newFileName);
+
+                // Rename the file in the upload directory
+                rename($oldFilePath, $newFilePath);
+
+                // Update the photo record in the database
+                $photo->update([
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'file_name' => $newFileName,
+                    'file_path' => 'images/upload/' . $newFileName,
+                ]);
+
+                return response()->json(['success' => true, 'message' => 'Image updated successfully!']);
+            } else {
+                return response()->json(['success' => false, 'message' => 'Original file not found.'], 404);
+            }
+        } catch (ValidationException $error) {
+            return response()->json(['success' => false, 'message' => 'Validation failed.'], 422);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'An error occurred while updating the image.'], 500);
         }
     }
+
 }

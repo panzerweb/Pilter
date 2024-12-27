@@ -66,6 +66,8 @@ let cropAndSave = function () {
     }
 };
 
+
+
 // Handle Image Upload
 const uploadImg = async () => {
     const formData = new FormData();

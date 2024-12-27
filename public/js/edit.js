@@ -3,11 +3,13 @@ console.log("Hello World");
 const updateImage = async function(id){
     let titleInput = document.getElementById(`title${id}`);
     let descriptionInput = document.getElementById(`description${id}`);
+    let file_nameInput = document.getElementById(`file_name${id}`);
 
     //value
     let title = titleInput.value;
     let description = descriptionInput.value;
-    console.log(title, description);
+    let file_name = file_nameInput.value; 
+    console.log(title, description. file_name);
     try {
         // Retrieve CSRF token
         const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
@@ -16,6 +18,7 @@ const updateImage = async function(id){
         const response = await axios.put(`/edit-image/${id}`, {
             title: title,
             description: description,
+            file_name: file_name,
           }, {
             headers: {
                 'X-CSRF-TOKEN': csrfToken,
