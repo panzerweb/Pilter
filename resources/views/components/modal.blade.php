@@ -1,5 +1,5 @@
 @foreach ($photos as $photo)
-    <!-- Modal -->
+    <!-- Modal for Editing-->
     <div class="modal fade" id="editModal{{$photo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
         <div class="modal-content bg-dark text-light border border-2 border-info">
@@ -52,3 +52,5 @@
 
     <script src="{{asset('js/edit.js')}}"></script>
 @endforeach
+
+

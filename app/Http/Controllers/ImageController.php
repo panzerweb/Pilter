@@ -50,7 +50,7 @@ class ImageController extends Controller
     {
         try {
             $request->validate([
-                "title" => "required|max:255",
+                "title" => "nullable|max:255",
                 "description" => "nullable|max:255",
                 "file_name" => "required|max:255|string",
             ]);
@@ -86,4 +86,10 @@ class ImageController extends Controller
         }
     }
 
+    // Delete Image
+    public function deleteImage($id){
+        Photo::findOrFail($id)->delete();
+
+        return $this->displayImage();
+    }
 }

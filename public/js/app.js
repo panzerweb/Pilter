@@ -1,3 +1,5 @@
+//Main Feature JavaScript
+
 let cropper; // Initialize cropper library
 let croppedBlob = null; // The cropped image initialization
 let uploadedFile = null; // Store the uploaded file
@@ -34,8 +36,12 @@ document.getElementById('cropModal').addEventListener('shown.bs.modal', () => {
 
 // On File Input Change
 let loadFile = function (event) {
-    uploadedFile = event.target.files[0]; // Store the uploaded file
-    initializeFunction(); // Call the initialize function
+    if (event.target.files) {
+        uploadedFile = event.target.files[0];
+    } else if (event instanceof Blob) {
+        uploadedFile = event;
+    }
+    initializeFunction();
 };
 
 // On Crop Button Click
@@ -66,10 +72,9 @@ let cropAndSave = function () {
     }
 };
 
-
-
 // Handle Image Upload
 const uploadImg = async () => {
+
     const formData = new FormData();
     formData.append('file_name', croppedBlob, 'cropped_image.jpg'); // Append the cropped Blob with a filename
 

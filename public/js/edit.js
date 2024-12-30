@@ -1,6 +1,7 @@
 console.log("Hello World");
 
 const updateImage = async function(id){
+    //Input HTML elements
     let titleInput = document.getElementById(`title${id}`);
     let descriptionInput = document.getElementById(`description${id}`);
     let file_nameInput = document.getElementById(`file_name${id}`);
@@ -9,7 +10,8 @@ const updateImage = async function(id){
     let title = titleInput.value;
     let description = descriptionInput.value;
     let file_name = file_nameInput.value; 
-    console.log(title, description. file_name);
+    console.log(title, description, file_name);
+
     try {
         // Retrieve CSRF token
         const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
