@@ -49,8 +49,11 @@ let cropImageAfter = function () {
     if (uploadedFile) {
         initializeFunction(); // Show the modal and initialize the cropper
     } else {
-        alert("Please upload an image first."); // Alert if no file is uploaded
-    }
+        Swal.fire({
+            icon: "error",
+            title: "Invalid Input",
+            text: "Please upload an image first!",
+        });    }
 };
 
 // Save the Cropped Image

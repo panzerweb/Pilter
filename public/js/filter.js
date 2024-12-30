@@ -128,4 +128,11 @@ function saveEditedImage() {
             uploadImg(); // Call upload function
         }, "image/jpeg");
     }
+    else{
+        Swal.fire({
+            icon: "error",
+            title: "Invalid Input",
+            text: "Please upload an image first!",
+        });
+    }
 }
