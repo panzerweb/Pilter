@@ -4,8 +4,8 @@
 @section('content')
 
     <div class="container-lg">
-        <div class="row justify-content-center">
-        <h1 class="fw-semibold text-center text-light">
+        <div class="row justify-content-start">
+        <h1 class="fw-semibold text-light">
             <span class="text-info">{{Auth::user()->name}}</span> Photos
         </h1>
         @foreach ($photos as $photo)

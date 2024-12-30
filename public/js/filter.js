@@ -7,6 +7,10 @@ let imageOutput = document.getElementById('image-output'); //Preview of Image
 
 // Filter Section
 let brightnessRange = document.getElementById("brightness");
+let contrastRange = document.getElementById("contrast");
+let grayscaleRange = document.getElementById("grayscale");
+let sepiaRange = document.getElementById("sepia");
+let hueRange = document.getElementById("hue");
 
 const resetButton = document.getElementById("reset");
 const saveButton = document.getElementById("upload-btn");
@@ -40,6 +44,26 @@ brightnessRange.addEventListener(
     () => {
     applyFilters();
 });
+contrastRange.addEventListener(
+    "input",
+    () => {
+    applyFilters();
+});
+grayscaleRange.addEventListener(
+    "input",
+    () => {
+    applyFilters();
+});
+sepiaRange.addEventListener(
+    "input",
+    () => {
+    applyFilters();
+});
+hueRange.addEventListener(
+    "input",
+    () => {
+    applyFilters();
+});
 
 // Reset button
 resetButton.addEventListener(
@@ -59,8 +83,16 @@ saveButton.addEventListener(
 function applyFilters() {
     if (currentImage) {
         const brightnessValue = brightnessRange.value;
+        const contrastValue = contrastRange.value;
+        const grayscaleValue = grayscaleRange.value;
+        const sepiaValue = sepiaRange.value;
+        const hueValue = hueRange.value;
 
-        const filterValue = `brightness(${brightnessValue}%)`;
+        const filterValue = `brightness(${brightnessValue}%)
+        contrast(${contrastValue}%)
+        grayscale(${grayscaleValue}%)
+        sepia(${sepiaValue}%)
+        hue-rotate(${hueValue}deg)`;
         imageOutput.style.filter = filterValue;
     }
 }
@@ -69,6 +101,10 @@ function applyFilters() {
 function resetFilters() {
     if (currentImage) {
         brightnessRange.value = 100;
+        contrastRange.value = 100;
+        grayscaleRange.value = 0;
+        sepiaRange.value = 0;
+        hueRange.value = 0;
         imageOutput.style.filter =
             "none";
     }

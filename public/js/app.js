@@ -92,15 +92,26 @@ const uploadImg = async () => {
 
         // Handle response
         if (response.data.success) {
-            alert('Image Uploaded Successfully');
+            Swal.fire({
+                title: "Image Uploaded Successfully",
+                icon: "success",
+                draggable: true
+              });
             console.log(response.data);
         } else {
-            alert('Failed to upload image.');
+            Swal.fire({
+                icon: "error",
+                title: "Failed to upload image",
+                text: "Something went wrong!",
+            });
         }
     } catch (error) {
         console.error('Error uploading image:', error);
-        alert('An error occurred during the upload.');
-    }
+        Swal.fire({
+            icon: "error",
+            title: "Error occurred while uploading",
+            text: "Something went wrong!",
+        });    }
 };
 
 // Reset Cropper and Modal State When Modal is Closed

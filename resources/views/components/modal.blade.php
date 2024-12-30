@@ -50,7 +50,6 @@
         </div>
     </div>
 
-    <script src="{{asset('js/edit.js')}}"></script>
 @endforeach
 
 

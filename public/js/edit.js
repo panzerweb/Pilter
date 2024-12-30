@@ -1,5 +1,3 @@
-console.log("Hello World");
-
 const updateImage = async function(id){
     //Input HTML elements
     let titleInput = document.getElementById(`title${id}`);
@@ -16,6 +14,7 @@ const updateImage = async function(id){
         // Retrieve CSRF token
         const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
+
         // Send Axios POST request
         const response = await axios.put(`/edit-image/${id}`, {
             title: title,
@@ -31,7 +30,25 @@ const updateImage = async function(id){
 
         // Handle response
         if (response.data.success) {
-            alert('Image Updated Successfully');
+            let timerInterval;
+            Swal.fire({
+                title: "Image Updated Successfully",
+                icon: "success",
+                draggable: true,
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+                willClose: () => {
+                clearInterval(timerInterval);
+                }
+                }).then((result) => {
+                  /* Read more about handling dismissals below */
+                  if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                  }
+            });
             let cropModal = bootstrap.Modal.getInstance(document.getElementById(`editModal${id}`));
             cropModal.hide();
 

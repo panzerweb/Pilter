@@ -9,6 +9,8 @@
     <div class="row justify-content-center">
         <h1 class="text-center text-light fw-semibold">PILTER</h1>
         <h5 class="text-center text-light fw-light mb-4">Enhance your Memories that you captured</h5>
+
+        {{-- Upload Image --}}
         <div class="col-md-5">
             <div class="card text-bg-dark border-info mb-3">
                 <div class="card-header text-center">
@@ -48,6 +50,8 @@
             </div>
 
         </div>
+
+        {{-- Filters --}}
         <div class="col-md-5">
             <div class="card text-bg-dark border-info mb-3">
                 <div class="card-header text-center">
@@ -60,36 +64,30 @@
                             Brightness:
                         </label>
                         <input type="range" id="brightness" 
-                               min="0" max="200" value="100" />
+                               min="0" max="200" value="100" class="form-range"/>
                         <br />
                         <label for="contrast" class="form-label text-light fw-semibold">
                             Contrast:
                         </label>
                         <input type="range" id="contrast" 
-                               min="0" max="200" value="100" />
+                               min="0" max="200" value="100" class="form-range" />
                         <br />
                         <label for="grayscale" class="form-label text-light fw-semibold">
                             Grayscale:
                         </label>
                         <input type="range" id="grayscale" 
-                               min="0" max="100" value="0" />
-                        <br />
-                        <label for="blur" class="form-label text-light fw-semibold">
-                            Blur:
-                        </label>
-                        <input type="range" id="blur" 
-                               min="0" max="10" value="0" />
+                               min="0" max="100" value="0" class="form-range" />
                         <br />
                         <label for="sepia" class="form-label text-light fw-semibold">
                             Sepia:
                         </label>
-                        <input type="range" id="sepia" min="0" max="100" value="0" />
+                        <input type="range" id="sepia" min="0" max="100" value="0" class="form-range" />
                         <br />
                         <label for="hue" class="form-label text-light fw-semibold">
                             Hue Rotation:
                         </label>
                         <input type="range" id="hue" 
-                               min="0" max="360" value="0" />
+                               min="0" max="360" value="0" class="form-range" />
                         <br />
                         <button id="reset" class="btn btn-danger">Reset</button>
                     </div>
