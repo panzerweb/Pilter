@@ -44,6 +44,12 @@ class ImageController extends Controller
 
         return view('pages.myphotos', compact('user','photos'));
     }
+    public function displayTrashed(){
+        $user = Auth::user();
+        $photos = Photo::withTrashed()->get();
+
+        return view('pages.trash', compact('user','photos'));
+    }
 
     //Update Image
     public function editImage(Request $request, Photo $photo)
@@ -86,10 +92,23 @@ class ImageController extends Controller
         }
     }
 
-    // Delete Image
+    // Delete Image and Restore Image
     public function deleteImage($id){
         Photo::findOrFail($id)->delete();
 
-        return $this->displayImage();
+        return response()->json(['success' => true, 'message' => 'Image deleted successfully!',]);
+    }
+    
+    public function forceDelete($id){
+        Photo::withTrashed()->findOrFail($id)->forceDelete();
+
+        return response()->json(['success' => true, 'message' => 'Image deleted permanently!',]);
+
+    }
+    public function restoreImage($id){
+        $photo = Photo::withTrashed()->findOrFail($id);
+        $photo->restore();
+
+        return response()->json(['success' => true, 'message' => 'Image restored successfully!',]);
     }
 }

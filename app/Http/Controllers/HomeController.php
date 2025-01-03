@@ -29,4 +29,8 @@ class HomeController extends Controller
     {
         return view('pages.myphotos');
     }
+    public function trash()
+    {
+        return view('pages.trash');
+    }
 }

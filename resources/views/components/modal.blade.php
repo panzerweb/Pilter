@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <div class="d-flex justify-content-center">
-                    <img src="{{asset($photo->file_path)}}" alt="" class="img-fluid rounded-3 border border-2 border-info">
+                    <img src="{{asset($photo->file_path)}}" alt="" id="image-update" class="img-fluid rounded-3 border border-2 border-info" style="max-width: 100%;">
                 </div>
 
                 <div class="mb-3">
@@ -51,5 +51,6 @@
     </div>
 
 @endforeach
+
 
 

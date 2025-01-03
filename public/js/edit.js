@@ -65,3 +65,4 @@ const updateImage = async function(id){
         alert('An error occurred during the upload.');
     }
 }
+
