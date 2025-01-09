@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', ' ') }}
@@ -77,7 +77,7 @@
         <div class="container-fluid pt-5">
             <div class="row">
                 <!-- Sidebar -->
-                <div class="col-2 col-lg-2 px-sm-2 px-0 bg-dark position-fixed" style="top: 50px; bottom: 0; z-index: 100;">
+                <div class="sidebar col-2 col-lg-2 px-sm-2 px-0 position-fixed" style="top: 50px; bottom: 0; z-index: 100;">
                     <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                             <li class="nav-item">

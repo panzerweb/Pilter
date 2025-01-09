@@ -2,7 +2,7 @@
     <!-- Modal for Editing-->
     <div class="modal fade" id="editModal{{$photo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
-        <div class="modal-content bg-dark text-light border border-2 border-info">
+        <div class="modal-content border border-2 border-info">
             <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">{{$photo->file_name}}</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -16,7 +16,7 @@
                     <label for="title" class="form-label fw-bold my-3">File Name</label>
                     <input
                         type="text"
-                        class="form-control bg-dark border border-2 border-info text-light"
+                        class="form-control border border-2 border-info"
                         name="file_name"
                         id="file_name{{$photo->id}}"
                         aria-describedby="helpId"
@@ -28,7 +28,7 @@
                     <label for="title" class="form-label fw-bold my-3">Title</label>
                     <input
                         type="text"
-                        class="form-control bg-dark border border-2 border-info text-light"
+                        class="form-control border border-2 border-info"
                         name="title"
                         id="title{{$photo->id}}"
                         aria-describedby="helpId"
@@ -38,7 +38,15 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label fw-bold my-3">Description</label>
-                    <textarea class="form-control bg-dark border border-2 border-info text-light" name="description" id="description{{$photo->id}}" rows="3" placeholder="Description">{{$photo->description}}</textarea>
+                    <textarea class="form-control border border-2 border-info" name="description" id="description{{$photo->id}}" rows="3" placeholder="Description">{{$photo->description}}</textarea>
+                </div>
+                <div class="mb-3">
+                    <form action="{{ route('image.download', $photo->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">
+                            Download
+                        </button>
+                    </form>               
                 </div>
                     
             </div>

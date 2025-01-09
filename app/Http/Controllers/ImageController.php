@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Photo;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Throwable;
 
 class ImageController extends Controller
 {
@@ -47,7 +49,7 @@ class ImageController extends Controller
     public function displayTrashed(){
         $user = Auth::user();
         $photos = Photo::withTrashed()->get();
-
+        
         return view('pages.trash', compact('user','photos'));
     }
 
@@ -90,6 +92,20 @@ class ImageController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'An error occurred while updating the image.'], 500);
         }
+    }
+
+    //Download Image
+    public function downloadImage($id){
+        try {
+            $photo = Photo::findOrFail($id);
+
+            $filePath = public_path($photo->file_path);
+
+            return response()->download($filePath);
+        } catch (Throwable $error) {
+            return $error;
+        }
+        
     }
 
     // Delete Image and Restore Image

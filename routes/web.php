@@ -24,4 +24,5 @@ Route::middleware('auth')->group(function (){
     Route::delete('/delete-image/{id}', [ImageController::class, 'deleteImage'])->name('image.destroy');
     Route::delete('/permanently-delete/{id}', [ImageController::class, 'forceDelete'])->name('image.delete');
     Route::get('/restore-image/{id}', [ImageController::class, 'restoreImage'])->name('image.restore');
+    Route::post('image-download/{id}', [ImageController::class, 'downloadImage'])->name('image.download');
 });

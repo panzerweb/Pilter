@@ -5,12 +5,22 @@
     box-sizing: border-box;
 }
 
+:root{
+    --primary: #2a3056;
+    --secondary: #43B0AF;
+    --tertiary: #1D719D;
+    --fourth: #81EC86;
+    --fifth: #b1b9c5;
+    --sixth: #fff;
+}
+
+
 body{
-    background: #1a1a1d !important;
+    background: var(--sixth) !important;
 }
 
 #app{
-    background: #1a1a1d;
+    background: var(--sixth);
 }
 
 /* Initially hide the overlay */
@@ -35,4 +45,12 @@ body{
 /* Add a scale effect on button hover */
 .btn-success:hover {
     transform: scale(1.1); /* Slightly enlarge the button */
+}
+
+/* Navbar */
+.navbar{
+    background: var(--primary) !important;
+}
+.sidebar{
+    background: var(--primary) !important;
 }

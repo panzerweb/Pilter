@@ -7,12 +7,12 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <h1 class="text-center text-light fw-semibold">PILTER</h1>
-        <h5 class="text-center text-light fw-light mb-4">Enhance your Memories that you captured</h5>
+        <h1 class="text-center text-dark fw-semibold">PILTER</h1>
+        <h5 class="text-center text-dark fw-light mb-4">Enhance your Memories that you captured</h5>
 
         {{-- Upload Image --}}
         <div class="col-md-5">
-            <div class="card text-bg-dark border-info mb-3">
+            <div class="card border-info mb-3 shadow">
                 <div class="card-header text-center">
                     <h1 class="fs-4">Upload Image</h1>
                     <span class="text-secondary">Maximum Size: 5mb | </span>
@@ -53,37 +53,37 @@
 
         {{-- Filters --}}
         <div class="col-md-5">
-            <div class="card text-bg-dark border-info mb-3">
+            <div class="card border-info mb-3 shadow">
                 <div class="card-header text-center">
                     <h1 class="fs-4">Filters</h1>
                     <span class="text-secondary">Limited features of filters as of now.</span>
                 </div>
                 <div class="card-body">
                     <div class="controls p-3">
-                        <label for="brightness" class="form-label text-light fw-semibold">
+                        <label for="brightness" class="form-label text-dark fw-semibold">
                             Brightness:
                         </label>
                         <input type="range" id="brightness" 
                                min="0" max="200" value="100" class="form-range"/>
                         <br />
-                        <label for="contrast" class="form-label text-light fw-semibold">
+                        <label for="contrast" class="form-label text-dark fw-semibold">
                             Contrast:
                         </label>
                         <input type="range" id="contrast" 
                                min="0" max="200" value="100" class="form-range" />
                         <br />
-                        <label for="grayscale" class="form-label text-light fw-semibold">
+                        <label for="grayscale" class="form-label text-dark fw-semibold">
                             Grayscale:
                         </label>
                         <input type="range" id="grayscale" 
                                min="0" max="100" value="0" class="form-range" />
                         <br />
-                        <label for="sepia" class="form-label text-light fw-semibold">
+                        <label for="sepia" class="form-label text-dark fw-semibold">
                             Sepia:
                         </label>
                         <input type="range" id="sepia" min="0" max="100" value="0" class="form-range" />
                         <br />
-                        <label for="hue" class="form-label text-light fw-semibold">
+                        <label for="hue" class="form-label text-dark fw-semibold">
                             Hue Rotation:
                         </label>
                         <input type="range" id="hue" 
