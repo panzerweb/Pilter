@@ -54,3 +54,50 @@ body{
 .sidebar{
     background: var(--primary) !important;
 }
+
+/* Masonry Layout JS */
+/* ---- grid ---- */
+
+.grid {
+    column-count: 4;
+    column-gap: 10px;
+    background: var(--sixth); /* Retaining your variable */
+    margin: 0 auto;
+    padding: 0;
+}
+
+.grid-item {
+    break-inside: avoid;
+    margin-bottom: 10px;
+    width: 100%; /* Ensures responsiveness within the grid layout */
+}
+
+.grid-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 5px; /* Optional, to match your card design */
+}
+
+/* Tablet View: 3 Columns */
+@media (max-width: 992px) {
+    .grid {
+        column-count: 2;
+    }
+}
+
+/* Mobile View: 2 Columns */
+@media (max-width: 768px) {
+    .grid {
+        column-count: 2;
+    }
+}
+
+/* Small Mobile View: 1 Column */
+@media (max-width: 576px) {
+    .grid {
+        column-count: 1;
+    }
+}
+
+  

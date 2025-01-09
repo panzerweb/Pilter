@@ -134,6 +134,7 @@
     <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/filter.js')}}"></script>
     <script src="{{asset('js/delete-restore.js')}}"></script>
+    <script src="{{asset('js/masonry.js')}}"></script>
 
 </body>
 </html>

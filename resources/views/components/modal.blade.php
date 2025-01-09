@@ -8,8 +8,11 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center flex-column">
                     <img src="{{asset($photo->file_path)}}" alt="" id="image-update" class="img-fluid rounded-3 border border-2 border-info" style="max-width: 100%;">
+                    
+                    <button type="button" class="btn btn-warning my-3" onclick="cropUpdate('{{asset($photo->file_path)}}')">Crop</button>
+                    <button type="button" class="btn btn-danger" id="saveButton" onclick="saveUpdatedCroppedImage()" style="display: none">Save</button>
                 </div>
 
                 <div class="mb-3">
