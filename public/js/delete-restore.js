@@ -164,3 +164,59 @@ const permDelete = async (id) => {
             text: "Something went wrong!",
         });    }
 };
+
+// Delete All function
+
+function deleteAll(){
+    Swal.fire({
+        title: "Are you sure to permanently delete all image?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            deleteAllImage();
+        }
+      });
+}
+
+const deleteAllImage = async () => {
+    try {
+        // Retrieve CSRF token
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+        // Send Axios POST request
+        const response = await axios.delete(`/delete-all-image`, {
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+            },
+        });
+
+        // Handle response
+        if (response.data.success) {
+            Swal.fire({
+                title: "All Image Deleted Successfully",
+                icon: "success",
+                draggable: true
+              }).then(()=>{
+                location.reload();
+              });
+            console.log(response.data);
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Failed to Delete images",
+                text: "Something went wrong!",
+            });
+        }
+    } catch (error) {
+        console.error('Error Deleting image:', error);
+        Swal.fire({
+            icon: "error",
+            title: "Error occurred while deleting",
+            text: "Something went wrong!",
+        });    }
+}

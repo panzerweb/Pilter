@@ -65,8 +65,7 @@ let cropAndSave = function () {
         });
 
         canvas.toBlob((blob) => {
-            let imageInput = document.getElementById('image-output');
-            imageInput.src = URL.createObjectURL(blob);
+            imageOutput.src = URL.createObjectURL(blob);
             let cropModal = bootstrap.Modal.getInstance(document.getElementById("cropModal"));
             cropModal.hide();
 

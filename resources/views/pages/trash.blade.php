@@ -16,6 +16,8 @@
                 <h3 class="fw-semibold text-dark">
                     You have <strong>{{ $photos->whereNotNull('deleted_at')->count() }}</strong> deleted photos
                 </h3>
+
+                <button class="btn btn-danger fw-semibold my-3" onclick="deleteAll()">Delete All</button>
             </div>
         </div>
 

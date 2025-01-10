@@ -127,4 +127,11 @@ class ImageController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Image restored successfully!',]);
     }
+    public function deleteAll(){
+        $photo = Photo::whereNotNull('deleted_at');
+        $photo->forceDelete();
+
+        return response()->json(['success' => true, 'message' => 'All Image deleted permanently!',]);
+
+    }
 }

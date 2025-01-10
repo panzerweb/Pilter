@@ -73,10 +73,11 @@ resetButton.addEventListener(
 });
 
 // Save Button
-saveButton.addEventListener(
-    "click",
-    () => {
-        saveEditedImage();
+saveButton.addEventListener("click", () => {
+    saveEditedImage();
+    setTimeout(() => {
+        uploadImg(); // Upload the processed image after saving it
+    }, 1000); // Delay to ensure the Blob is ready
 });
 
 // Apply the filters
@@ -94,6 +95,7 @@ function applyFilters() {
         sepia(${sepiaValue}%)
         hue-rotate(${hueValue}deg)`;
         imageOutput.style.filter = filterValue;
+
     }
 }
 
@@ -111,28 +113,36 @@ function resetFilters() {
 }
 // Save Edited Image and Transfer it to the uploadImg function to save to backend
 function saveEditedImage() {
-    if (currentImage) {
+    if (croppedBlob) {
         const canvas = document.createElement("canvas");
-        canvas.width = currentImage.width;
-        canvas.height = currentImage.height;
-
         const context = canvas.getContext("2d");
+        const image = new Image();
 
-        // Apply filters directly to the canvas
-        context.filter = imageOutput.style.filter || "none";
-        context.drawImage(currentImage, 0, 0, canvas.width, canvas.height);
+        // Load the cropped image from the Blob
+        image.src = URL.createObjectURL(croppedBlob);
 
-        // Convert canvas to Blob and pass to the upload function
-        canvas.toBlob((blob) => {
-            croppedBlob = blob; // Assign the Blob for upload
-            uploadImg(); // Call upload function
-        }, "image/jpeg");
-    }
-    else{
+        image.onload = () => {
+            // Set canvas dimensions to match the cropped image
+            canvas.width = image.width;
+            canvas.height = image.height;
+
+            // Apply filters to the canvas context
+            context.filter = imageOutput.style.filter || "none";
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+            // Convert canvas to Blob and pass to the upload function
+            canvas.toBlob(
+                (blob) => {
+                    croppedBlob = blob; // Update the Blob for upload
+                },
+                "image/jpeg",
+            );
+        };
+    } else {
         Swal.fire({
             icon: "error",
             title: "Invalid Input",
-            text: "Please upload an image first!",
+            text: "Please crop an image first!",
         });
     }
 }

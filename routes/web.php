@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function (){
     Route::put('/edit-image/{photo}', [ImageController::class, 'editImage'])->name('image.edit');
     Route::delete('/delete-image/{id}', [ImageController::class, 'deleteImage'])->name('image.destroy');
     Route::delete('/permanently-delete/{id}', [ImageController::class, 'forceDelete'])->name('image.delete');
+    Route::delete('/delete-all-image', [ImageController::class, 'deleteAll'])->name('image.deleteAll');
     Route::get('/restore-image/{id}', [ImageController::class, 'restoreImage'])->name('image.restore');
     Route::post('image-download/{id}', [ImageController::class, 'downloadImage'])->name('image.download');
 });
