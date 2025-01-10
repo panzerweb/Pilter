@@ -1,6 +1,7 @@
+let image = document.getElementById('image-update');
+
 function cropUpdate(id){
     let saveButton = document.getElementById('saveButton');
-    image = document.getElementById('image-update');
     image.src = id;
 
     if (cropper) {
@@ -23,7 +24,22 @@ function cropUpdate(id){
 }
 
 function saveUpdatedCroppedImage(){
-    // Code here for saving an updated cropped image
+    if(cropper){
+        const canvas = cropper.getCroppedCanvas({
+            width: 1000,
+            height: 400,
+        });
+
+        canvas.toBlob((blob) => {
+            image.src = URL.createObjectURL(blob);
+
+            croppedBlob = blob; // Save the cropped image blob
+        }, 'image/jpeg');
+
+        cropper.destroy();
+    }
+
+    console.log(image);
 }
 
 const updateImage = async function(id){
@@ -31,7 +47,6 @@ const updateImage = async function(id){
     let titleInput = document.getElementById(`title${id}`);
     let descriptionInput = document.getElementById(`description${id}`);
     let file_nameInput = document.getElementById(`file_name${id}`);
-    let croppedImage;
 
     //value
     let title = titleInput.value;
@@ -39,23 +54,13 @@ const updateImage = async function(id){
     let file_name = file_nameInput.value; 
     console.log(title, description, file_name);
     try {
-        
-        if(window.cropper){
-            croppedImage = await new Promise((resolve) =>{
-                window.cropper.getCroppedCanvas().toBlob((blob) =>{
-                    resolve(blob);
-                })
-            })
-        }
+
 
         let updateFormData = new FormData();
         updateFormData.append('title', title);
         updateFormData.append('description', description);
         updateFormData.append('file_name', file_name);
 
-        if (croppedImage) {  
-            updateFormData.append('image', blob); // Cropped image as a Blob
-        }
 
         console.log(updateFormData);
         // Retrieve CSRF token

@@ -120,7 +120,7 @@ function saveEditedImage() {
 
         // Load the cropped image from the Blob
         image.src = URL.createObjectURL(croppedBlob);
-
+x   
         image.onload = () => {
             // Set canvas dimensions to match the cropped image
             canvas.width = image.width;
