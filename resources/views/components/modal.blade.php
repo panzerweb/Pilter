@@ -10,22 +10,6 @@
             <div class="modal-body">
                 <div class="d-flex justify-content-center flex-column">
                     <img src="{{asset($photo->file_path)}}" alt="" id="image-update" class="img-fluid rounded-3 border border-2 border-info" style="max-width: 100%;">
-                    
-                    <button type="button" class="btn btn-warning my-3" onclick="cropUpdate('{{asset($photo->file_path)}}')">Crop</button>
-                    <button type="button" class="btn btn-danger" id="saveButton" onclick="saveUpdatedCroppedImage()" style="display: none">Save</button>
-                </div>
-
-                <div class="mb-3">
-                    <label for="title" class="form-label fw-bold my-3">File Name</label>
-                    <input
-                        type="text"
-                        class="form-control border border-2 border-info"
-                        name="file_name"
-                        id="file_name{{$photo->id}}"
-                        aria-describedby="helpId"
-                        placeholder="Image Name"
-                        value="{{$photo->file_name}}"
-                    />
                 </div>
                 <div class="mb-3">
                     <label for="title" class="form-label fw-bold my-3">Title</label>

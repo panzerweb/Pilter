@@ -1,65 +1,18 @@
-let image = document.getElementById('image-update');
-
-function cropUpdate(id){
-    let saveButton = document.getElementById('saveButton');
-    image.src = id;
-
-    if (cropper) {
-        cropper.destroy(); // Destroy existing cropper instance
-    }
-
-    cropper = new Cropper(image, {
-        responsive: true,
-        autoCrop: false,
-        zoomOnWheel: true,
-        autoCropArea: 0.8,
-        center: true,
-        viewMode: 1, // Restrict the cropping box within the canvas
-        ready() {
-            this.cropper.crop();
-        },
-    });
-
-    saveButton.style.display = 'block';
-}
-
-function saveUpdatedCroppedImage(){
-    if(cropper){
-        const canvas = cropper.getCroppedCanvas({
-            width: 1000,
-            height: 400,
-        });
-
-        canvas.toBlob((blob) => {
-            image.src = URL.createObjectURL(blob);
-
-            croppedBlob = blob; // Save the cropped image blob
-        }, 'image/jpeg');
-
-        cropper.destroy();
-    }
-
-    console.log(image);
-}
-
 const updateImage = async function(id){
     //Input HTML elements
     let titleInput = document.getElementById(`title${id}`);
     let descriptionInput = document.getElementById(`description${id}`);
-    let file_nameInput = document.getElementById(`file_name${id}`);
 
     //value
     let title = titleInput.value;
     let description = descriptionInput.value;
-    let file_name = file_nameInput.value; 
-    console.log(title, description, file_name);
+    console.log(title, description);
     try {
 
 
         let updateFormData = new FormData();
         updateFormData.append('title', title);
         updateFormData.append('description', description);
-        updateFormData.append('file_name', file_name);
 
 
         console.log(updateFormData);

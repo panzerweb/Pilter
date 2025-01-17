@@ -75,7 +75,7 @@ let cropAndSave = function () {
 };
 
 // Handle Image Upload
-const uploadImg = async () => {
+async function uploadImg(){
 
     const formData = new FormData();
     formData.append('file_name', croppedBlob, 'cropped_image.jpg'); // Append the cropped Blob with a filename
