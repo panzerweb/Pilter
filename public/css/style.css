@@ -10,17 +10,17 @@
     --secondary: #43B0AF;
     --tertiary: #1D719D;
     --fourth: #81EC86;
-    --fifth: #b1b9c5;
+    --fifth: #f0eded;
     --sixth: #fff;
 }
 
 
 body{
-    background: var(--sixth) !important;
+    background: var(--fifth) !important;
 }
 
 #app{
-    background: var(--sixth);
+    background: var(--fifth);
 }
 
 /* Initially hide the overlay */
