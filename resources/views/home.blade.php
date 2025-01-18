@@ -100,15 +100,36 @@
 
 <!-- Modal for Cropping-->
 <div class="modal fade" id="cropModal" tabindex="-1" aria-labelledby="cropModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="cropModalLabel">Modal title</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <div>
-                <img id="image-crop" src="" style="max-width: 100%; height: auto;" class="d-none">
+            <div class="row justify-content-evenly">
+                <div class="col-lg-6">
+                    <div>
+                        <img id="image-crop" src="" style="max-width: 100%; height: auto;" class="d-none">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-bold my-2">Title</label>
+                        <input
+                            type="text"
+                            class="form-control border border-2 border-info"
+                            name="title"
+                            id="title"
+                            aria-describedby="helpId"
+                            placeholder="Image Title"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label fw-bold my-2">Description</label>
+                        <textarea class="form-control border border-2 border-info" name="description" id="description" rows="3" placeholder="Description"></textarea>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="modal-footer">

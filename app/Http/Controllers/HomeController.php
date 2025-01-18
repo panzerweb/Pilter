@@ -33,4 +33,7 @@ class HomeController extends Controller
     {
         return view('pages.trash');
     }
+    public function newsFeed(){
+        return view('pages.newsfeed');
+    }
 }

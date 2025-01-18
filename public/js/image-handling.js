@@ -1,4 +1,4 @@
-//Main Feature JavaScript
+//Image Upload Handling
 
 let cropper; // Initialize cropper library
 let croppedBlob = null; // The cropped image initialization
@@ -77,7 +77,14 @@ let cropAndSave = function () {
 // Handle Image Upload
 async function uploadImg(){
 
+    let titlePost = document.getElementById('title');
+    let descriptionPost = document.getElementById("description");
+
+    let title = titlePost.value;
+    let description = descriptionPost.value;
     const formData = new FormData();
+    formData.append('title', title); 
+    formData.append('description', description); 
     formData.append('file_name', croppedBlob, 'cropped_image.jpg'); // Append the cropped Blob with a filename
 
     try {

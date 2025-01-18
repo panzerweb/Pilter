@@ -16,7 +16,8 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/pages/myphotos', [HomeController::class, 'myPhotos'])->name('pages.myphotos');
-Route::get('/pages/trash', [HomeController::class, 'myPhotos'])->name('pages.trash');
+Route::get('/pages/trash', [HomeController::class, 'trash'])->name('pages.trash');
+Route::get('/pages/newsfeed', [HomeController::class, 'newsFeed'])->name('pages.newsfeed');
 
 Route::middleware('auth')->group(function (){
     Route::post('/upload-image', [ImageController::class, 'uploadImage'])->name('image.upload');
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function (){
     Route::delete('/delete-all-image', [ImageController::class, 'deleteAll'])->name('image.deleteAll');
     Route::get('/restore-image/{id}', [ImageController::class, 'restoreImage'])->name('image.restore');
     Route::post('image-download/{id}', [ImageController::class, 'downloadImage'])->name('image.download');
+    Route::get('/pages/newsfeed', [ImageController::class, 'displayPost'])->name('pages.newsfeed');
 });
 
 

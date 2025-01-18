@@ -14,6 +14,8 @@ class ImageController extends Controller
     // Upload Image Controller
     public function uploadImage(Request $request){
         $request->validate([
+            "title" => "nullable|max:255",
+            "description" => "nullable|max:255",
             'file_name' => "required|image|mimes:png,jpg,jpeg,gif|max:5120",
         ]);
 
@@ -31,6 +33,8 @@ class ImageController extends Controller
             $photo->user_id = Auth::id();
             $photo->file_name = $imageName;
             $photo->file_path = 'images/upload/' . $imageName;
+            $photo->title = $request->title;
+            $photo->description = $request->description;
             $photo->save();
 
             return response()
@@ -51,6 +55,12 @@ class ImageController extends Controller
         $photos = Photo::withTrashed()->get();
         
         return view('pages.trash', compact('user','photos'));
+    }
+    public function displayPost(){
+        $user = Auth::user();
+        $photos = Photo::with('user')->get();
+
+        return view('pages.newsfeed', compact('user','photos'));
     }
 
     //Update Image
