@@ -14,13 +14,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Home Controller
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 Route::get('/pages/myphotos', [HomeController::class, 'myPhotos'])->name('pages.myphotos');
 Route::get('/pages/trash', [HomeController::class, 'trash'])->name('pages.trash');
 Route::get('/pages/newsfeed', [HomeController::class, 'newsFeed'])->name('pages.newsfeed');
 Route::get('/pages/editprofile', [HomeController::class, 'editProfile'])->name('pages.edit-profile');
 
+// ImageController
 Route::middleware('auth')->group(function (){
     Route::post('/upload-image', [ImageController::class, 'uploadImage'])->name('image.upload');
     Route::get('/pages/myphotos', [ImageController::class, 'displayImage'])->name('pages.myphotos');
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/pages/newsfeed', [ImageController::class, 'displayPost'])->name('pages.newsfeed');
 });
 
+// UserController
 Route::middleware('auth')->group(function (){
     Route::put('/edit-user/{user}', [UserController::class, 'updateUser'])->name('user.edit');
     Route::get('/user/{id}/myphotos', [UserController::class, 'visitProfile'])->name('user.profile');
@@ -41,7 +43,7 @@ Route::middleware('auth')->group(function (){
 
 });
 
-// Admin
+// Admin Controller
 Route::middleware(['auth', EnsureAdmin::class])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 });
