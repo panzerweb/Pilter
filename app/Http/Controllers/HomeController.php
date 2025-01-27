@@ -36,4 +36,8 @@ class HomeController extends Controller
     public function newsFeed(){
         return view('pages.newsfeed');
     }
+    public function editProfile(){
+        return view('pages.edit-profile');
+    }
+
 }

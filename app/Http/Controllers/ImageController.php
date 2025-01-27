@@ -52,13 +52,16 @@ class ImageController extends Controller
     }
     public function displayTrashed(){
         $user = Auth::user();
-        $photos = Photo::withTrashed()->get();
+        $photos = Photo::where('user_id', auth()->id())->withTrashed()->get();
         
         return view('pages.trash', compact('user','photos'));
     }
+    // Display posted images in news feed
     public function displayPost(){
         $user = Auth::user();
-        $photos = Photo::with('user')->get();
+        $photos = Photo::with('user')
+                    ->inRandomOrder()
+                    ->get();
 
         return view('pages.newsfeed', compact('user','photos'));
     }

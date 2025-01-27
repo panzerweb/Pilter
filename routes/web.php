@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,6 +19,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/pages/myphotos', [HomeController::class, 'myPhotos'])->name('pages.myphotos');
 Route::get('/pages/trash', [HomeController::class, 'trash'])->name('pages.trash');
 Route::get('/pages/newsfeed', [HomeController::class, 'newsFeed'])->name('pages.newsfeed');
+Route::get('/pages/editprofile', [HomeController::class, 'editProfile'])->name('pages.edit-profile');
 
 Route::middleware('auth')->group(function (){
     Route::post('/upload-image', [ImageController::class, 'uploadImage'])->name('image.upload');
@@ -32,6 +34,12 @@ Route::middleware('auth')->group(function (){
     Route::get('/pages/newsfeed', [ImageController::class, 'displayPost'])->name('pages.newsfeed');
 });
 
+Route::middleware('auth')->group(function (){
+    Route::put('/edit-user/{user}', [UserController::class, 'updateUser'])->name('user.edit');
+    Route::get('/user/{id}/myphotos', [UserController::class, 'visitProfile'])->name('user.profile');
+    Route::get('/pages/showprofile', [UserController::class, 'showProfile'])->name('user.show-profile');
+
+});
 
 // Admin
 Route::middleware(['auth', EnsureAdmin::class])->group(function () {

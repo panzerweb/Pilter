@@ -14,7 +14,9 @@
             <div class="card shadow-sm border-0 mb-4">
                 <!-- Post Header -->
                 <div class="d-flex align-items-center p-3 border-bottom">
-                    <img src="https://via.placeholder.com/50" alt="user-avatar" class="rounded-circle me-3" width="50" height="50">
+                    <a href="{{route('user.profile', $photo->user->id)}}">
+                        <img src="{{asset($photo->user->profilepic)}}" alt="user-avatar" class="rounded-circle me-3" width="50" height="50">
+                    </a>
                     <div>
                         <h6 class="mb-0 fw-bold">{{$photo->user->name}}</h6>
                         <small class="text-muted">{{ $photo->created_at->format('M d, Y h:i A') }}</small>
