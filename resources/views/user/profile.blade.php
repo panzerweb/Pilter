@@ -17,7 +17,7 @@
                             <h5 class="fw-semibold">Bio: </h5>
                             <p>{{ $user->bio }}</p>
 
-                            <a href="{{ route('user.show-profile') }}">
+                            <a href="{{ route('user.show-profile', $user->id) }}">
                                 <button
                                     type="button"
                                     name=""

@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function (){
     Route::put('/edit-user/{user}', [UserController::class, 'updateUser'])->name('user.edit');
     Route::put('/edit-user-password/{user}', [UserController::class, 'updatePassword'])->name('user.passwordedit');
     Route::get('/user/{id}/myphotos', [UserController::class, 'visitProfile'])->name('user.profile');
-    Route::get('/pages/showprofile', [UserController::class, 'showProfile'])->name('user.show-profile');
+    Route::get('/user/view-profile/{id}', [UserController::class, 'showProfile'])->name('user.show-profile');
 });
 
 // Admin Controller

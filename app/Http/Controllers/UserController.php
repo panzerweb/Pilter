@@ -60,7 +60,10 @@ class UserController extends Controller
         return view('user.profile', compact('user', 'photos'));
     }
 
-    public function showProfile(){
-        return view('user.view-profile');
+    public function showProfile($id){
+        $user = User::findOrFail($id);
+        $user->where('user_id', $id);
+
+        return view('user.view-profile', compact('user'));
     }
 }
