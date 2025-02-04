@@ -131,7 +131,7 @@
         
                 <!-- Main Content -->
                 <div class="col-9 col-lg-10 py-3 offset-2">
-                    <main class="main-content py-4">
+                    <main class="main-content">
                         @yield('content')
                     </main>
                 </div>
@@ -153,6 +153,7 @@
     <script src="{{asset('js/edit.js')}}"></script>
     <script src="{{asset('js/filter.js')}}"></script>
     <script src="{{asset('js/delete-restore.js')}}"></script>
+    <script src="{{asset('js/admin.js')}}"></script>
 
 </body>
 </html>

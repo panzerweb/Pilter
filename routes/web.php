@@ -41,10 +41,10 @@ Route::middleware('auth')->group(function (){
     Route::put('/edit-user-password/{user}', [UserController::class, 'updatePassword'])->name('user.passwordedit');
     Route::get('/user/{id}/myphotos', [UserController::class, 'visitProfile'])->name('user.profile');
     Route::get('/pages/showprofile', [UserController::class, 'showProfile'])->name('user.show-profile');
-
 });
 
 // Admin Controller
 Route::middleware(['auth', EnsureAdmin::class])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::delete('/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteuser');
 });

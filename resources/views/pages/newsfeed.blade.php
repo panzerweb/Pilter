@@ -4,14 +4,40 @@
 
 <div class="container py-4">
     <!-- Title Section -->
-    <h1 class="fw-semibold text-center mb-4">News Feed</h1>
+    <div class="d-flex justify-content-between align-items-center bg-light p-3 shadow-lg rounded-2">
+        <div class="d-block">
+            <div class="d-flex">
+                <img src="{{asset(Auth::user()->profilepic)}}" alt="user-avatar" class="rounded-3 me-3 border border-3 border-dark" width="100" height="100">
+                <div class="d-flex flex-column">
+                    <h4 class="align-self-start">{{Auth::user()->name}}</h4>
+                    @if(auth()->check() && auth()->user()->role === 'admin')
+                        <h5><span class="badge text-bg-success">{{Auth::user()->role}}</span></h5>
+                    @else
+                        <h5><span class="badge text-bg-primary">{{Auth::user()->role}}</span></h5>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="d-flex align-items-start gap-3">
+            <a href="{{route('home')}}">
+                <button class="btn btn-warning p-3 border border-3 border-dark">
+                    <span class="fw-semibold">What's New?</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                    </svg>
+                </button>
+            </a>
+        </div>
+    </div>
 
     <!-- News Feed Posts -->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center pt-3">
+        <h1 class="fw-semibold text-center mb-4">News Feed</h1>
+
         <div class="col-12 col-lg-8">
             @foreach ($photos as $photo)
             <!-- Post Section -->
-            <div class="card shadow-sm border-0 mb-4">
+            <div class="card shadow-lg border-0 mb-4">
                 <!-- Post Header -->
                 <div class="d-flex align-items-center p-3 border-bottom">
                     <a href="{{route('user.profile', $photo->user->id)}}">

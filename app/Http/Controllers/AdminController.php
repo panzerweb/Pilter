@@ -13,4 +13,13 @@ class AdminController extends Controller
         
         return view('admin.dashboard', compact('users'));
     }
+
+    //Delete
+    public function deleteUser($id){
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        // return view('admin.dashboard', compact('user'));
+        return response()->json(['success' => true, 'message' => 'User deleted successfully.']);
+    }
 }
