@@ -38,7 +38,7 @@
                     <div class="grid px-0">   
                         @foreach ($photos as $photo)
                             <div class="grid-item m-1">
-                                <div class="card rounded-1 border border-3 border-dark">
+                                <div class="card rounded-1 shadow-lg">
                                     <div class="image-container">
                                         <img src="{{ asset($photo->file_path) }}" alt="{{ $photo->title }}" class="img-fluid">
                                         <div class="card-img-overlay d-flex align-content-center flex-wrap py-0 gap-3 overlay-hidden">

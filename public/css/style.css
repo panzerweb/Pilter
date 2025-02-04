@@ -31,7 +31,7 @@ body{
 }
 
 /* Reveal the overlay on hover */
-.card:hover .overlay-hidden {
+.grid-item:hover .overlay-hidden {
     opacity: 1;
 }
 
@@ -69,6 +69,7 @@ body{
 .grid-item {
     break-inside: avoid;
     margin-bottom: 10px;
+    cursor: pointer;
     width: 100%; /* Ensures responsiveness within the grid layout */
 }
 

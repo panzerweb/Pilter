@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
     //Update User
     public function updateUser(Request $request, User $user)
     {
@@ -35,6 +37,19 @@ class UserController extends Controller
         $user->save();
     
         return redirect()->route('pages.myphotos')->with('success', 'User Updated Successfully.'); 
+    }
+
+    public function updatePassword(Request $request, User $user){
+        // Validate the request
+        $request->validate([
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user->password = $request->password;
+        $user->save();
+
+        return redirect()->route('pages.myphotos')->with('success', 'User Updated Successfully.'); 
+
     }
 
     //Visit Profile
