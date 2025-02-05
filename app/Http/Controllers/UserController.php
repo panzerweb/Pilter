@@ -11,13 +11,14 @@ class UserController extends Controller
 {
 
     //Update User
-    public function updateUser(Request $request, User $user)
+    public function updateUser(Request $request, $id)
     {
+        $user = User::findOrFail($id);
         // Validate the request
         $request->validate([
-            "name" => 'required|max:255|string', // Adjusted max length to a realistic value
-            "bio" => 'nullable|string',
-            "profilepic" => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            "name" => 'required|max:255|string',
+            "bio" => 'nullable|max:255',
+            "profilepic" => 'nullable|sometimes|image|mimes:jpeg,png,jpg,gif|max:5120',
         ]);
     
         // Handle profile picture upload
@@ -37,6 +38,7 @@ class UserController extends Controller
         $user->save();
     
         return redirect()->route('pages.myphotos')->with('success', 'User Updated Successfully.'); 
+
     }
 
     public function updatePassword(Request $request, User $user){

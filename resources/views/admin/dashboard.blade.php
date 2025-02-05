@@ -29,10 +29,10 @@
                                     </td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('user.profile', $user->id) }}" class="btn btn-outline-primary btn-sm">
+                                            <a href="{{ route('user.profile', $user->id) }}" class="btn btn-primary btn-sm">
                                                 <i class="bi bi-eye-fill"></i> View
                                             </a>
-                                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteUser({{ $user->id }})">
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="deleteUser({{ $user->id }})">
                                                 <i class="bi bi-trash3-fill"></i> Delete
                                             </button>
                                         </div>

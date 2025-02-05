@@ -8,7 +8,7 @@
             <div class="col-12 col-lg-6">
                 <!-- Profile Image on the Left -->
                 <div class="me-4 text-center">
-                    <img src="{{ asset(Auth::user()->profilepic) }}" class="rounded-2 border border-1 shadow-sm img-fluid" alt="Profile Picture">
+                    <img id="profile-output" src="{{ asset(Auth::user()->profilepic) }}" class="rounded-2 border border-1 shadow-sm img-fluid" alt="Profile Picture">
                 </div>
             </div>
             <div class="col-12 col-lg-6">
@@ -20,8 +20,8 @@
 
                         <!-- Username -->
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" id="username" class="form-control" name="name" value="{{ old('name', Auth::user()->name) }}" required>
+                            <label for="name" class="form-label">Username</label>
+                            <input type="text" id="name" class="form-control" name="name" value="{{ old('name', Auth::user()->name) }}" required>
                         </div>
 
                         <!-- Bio -->
@@ -82,4 +82,5 @@
             </div>
         </div>
     </div>
+
 @endsection
