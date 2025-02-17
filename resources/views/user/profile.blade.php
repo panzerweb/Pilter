@@ -4,33 +4,44 @@
 @section('content')
     <div class="container-lg">
         <div class="row justify-content-center">
-            <div class="card text-start">
+            <div class="card bg-dark text-light border-info shadow-lg p-4">
                 <div class="card-body">
-                    <div class="d-flex gap-3 flex-column flex-md-row justify-content-center align-items-center">
-                        <div class="col-lg-3 mx-auto">
-                            <img src="{{ asset($user->profilepic) }}" alt="user-avatar" class="text-center object-fit-cover me-3 border border-dark img-fluid w-75">
+                    <div class="d-flex gap-4 flex-column flex-md-row align-items-center">
+                        <!-- Profile Picture -->
+                        <div class="col-lg-3 text-center">
+                            <img src="{{ asset($user->profilepic) }}" 
+                                 alt="User Avatar" 
+                                 class="border border-info img-fluid w-100 shadow">
                         </div>
+            
+                        <!-- User Info -->
                         <div class="col-lg-9">
-                            <h1 class="fw-semibold text-dark">
+                            <h2 class="fw-bold">
                                 <span class="text-info">{{ $user->name }}</span>
-                            </h1>
-                            <h5 class="fw-semibold">Bio: </h5>
-                            <p>{{ $user->bio }}</p>
+                                <span class="badge text-bg-warning fs-5">{{ $user->role ?? 'Member' }}</span>
+                            </h2>
 
+                            <div class="mb-3">
+                                <span class="fw-semibold fs-4">Email:</span>
+                                <p class="text-light">{{ $user->email ?? 'Not provided' }}</p>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="fw-semibold fs-4">Bio:</span>
+                                <p class="text-warning bg-black p-3 rounded-3 w-75 text-wrap">{{ $user->bio ?? 'No bio available.' }}</p>
+                            </div>
+            
+                            <!-- Profile Button -->
                             <a href="{{ route('user.show-profile', $user->id) }}">
-                                <button
-                                    type="button"
-                                    name=""
-                                    id=""
-                                    class="btn btn-primary"
-                                >
-                                    View Profile
+                                <button type="button" class="btn btn-info px-4 fw-semibold">
+                                    <span class="fw-semibold fs-5">View Profile</span>
                                 </button>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
+            
 
             <!-- Display User Photos -->
             <div class="card text-start mt-3">

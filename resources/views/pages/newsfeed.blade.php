@@ -4,7 +4,7 @@
 
 <div class="container py-4">
     <!-- Title Section -->
-    <div class="d-flex justify-content-between align-items-center bg-light p-3 shadow-lg rounded-2">
+    <div class="d-flex justify-content-between align-items-center bg-dark text-light p-3 shadow-lg rounded-2">
         <div class="d-block">
             <div class="d-flex">
                 <img src="{{asset(Auth::user()->profilepic)}}" alt="user-avatar" class="rounded-3 me-3 border border-3 border-dark" width="100" height="100">
