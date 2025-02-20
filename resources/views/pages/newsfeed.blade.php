@@ -7,7 +7,7 @@
     <div class="d-flex justify-content-between align-items-center bg-dark text-light p-3 shadow-lg rounded-2">
         <div class="d-block">
             <div class="d-flex">
-                <img src="{{asset(Auth::user()->profilepic)}}" alt="user-avatar" class="rounded-3 me-3 border border-3 border-dark" width="100" height="100">
+                <img src="{{asset(Auth::user()->profilepic)}}" alt="user-avatar" class="rounded-3 object-fit-cover me-3 border border-3 border-dark" width="100" height="100">
                 <div class="d-flex flex-column">
                     <h4 class="align-self-start">{{Auth::user()->name}}</h4>
                     @if(auth()->check() && auth()->user()->role === 'admin')
@@ -41,7 +41,7 @@
                 <!-- Post Header -->
                 <div class="d-flex align-items-center p-3 border-bottom">
                     <a href="{{route('user.profile', $photo->user->id)}}">
-                        <img src="{{asset($photo->user->profilepic)}}" alt="user-avatar" class="rounded-circle me-3" width="50" height="50">
+                        <img src="{{asset($photo->user->profilepic)}}" alt="user-avatar" class="rounded-3 me-3 object-fit-fill" width="70" height="70">
                     </a>
                     <div>
                         <h6 class="mb-0 fw-bold">{{$photo->user->name}}</h6>

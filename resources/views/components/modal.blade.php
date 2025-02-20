@@ -18,13 +18,11 @@
 
                         <!-- Image Preview Section -->
                         <div class="col-lg-6 text-center">
-                            <img src="{{ asset($photo->file_path) }}" alt="Uploaded Image" class="img-fluid rounded-3 shadow-lg border border-info p-2">
-                            
-                            <!-- File Upload Input --To be Updated SOON  -->
-                            {{-- <div class="mt-3">
-                                <label class="form-label text-info fw-semibold">Change Photo</label>
-                                <input type="file" class="form-control border border-info" accept="image/*">
-                            </div> --}}
+                            <img src="{{ asset($photo->file_path) }}" 
+                                alt="Uploaded Image" 
+                                class="img-fluid rounded-3 shadow-lg border border-info p-2"
+                                id="file_path{{$photo->id}}"
+                            >
                         </div>
 
                         <!-- Edit Details Section -->

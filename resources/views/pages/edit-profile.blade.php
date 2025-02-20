@@ -8,8 +8,11 @@
             <div class="col-12 col-lg-6">
                 <!-- Profile Image on the Left -->
                 <div class="me-4 text-center">
-                    <img id="profile-output" src="{{ asset(Auth::user()->profilepic) }}" class="rounded-2 border border-1 shadow-sm img-fluid" alt="Profile Picture">
+                    <img id="profile-output" src="{{ asset(Auth::user()->profilepic) }}" 
+                        class="rounded-2 border border-1 shadow-sm img-fluid" 
+                        alt="Profile Picture">
                 </div>
+
             </div>
             <div class="col-12 col-lg-6">
                 <!-- Form on the Right -->
@@ -33,7 +36,7 @@
                         <!-- Profile Image Upload -->
                         <div class="mb-3">
                             <label for="profilepic" class="form-label">Change Profile Picture</label>
-                            <input type="file" id="profilepic" class="form-control" name="profilepic">
+                            <input type="file" id="profilepic" class="form-control" name="profilepic" onchange="previewImage(event)">
                         </div>
 
                         <!-- Submit Button -->

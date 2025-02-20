@@ -50,7 +50,26 @@
                 <div class="card-body">
                     <!-- Masonry Grid -->
                     <div class="grid px-0">   
-                        @foreach ($photos as $photo)
+                        <div class="grid-item m-1">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center mb-3">Have more memories?</h4>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{route('home')}}" class="mx-auto">
+                                            <button class="btn btn-warning p-3 border border-3 border-dark">
+                                                <span class="fw-semibold">Upload A Photo</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                                </svg>
+                                            </button>
+                                        </a>                            
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        @if ($photos->isNotEmpty())
+                            @foreach ($photos as $photo)
                             <!-- Individual grid item -->
                             <div class="grid-item m-1">
                                 <div class="card rounded-1 shadow-lg">
@@ -82,8 +101,16 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                            @endforeach
+                        @else
+                            <div class="grid-item m-1">
+                                <h4 class="card-title text-center">Images Not Found</h4>
+                                <p class="card-text text-center">There are no recorded images inside this account</p>
+                            </div>
+                        
+                        @endif
                     </div>
+
                 </div>
             </div>
             
